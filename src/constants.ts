@@ -1,87 +1,4 @@
-import { Code2, Cpu, Layout, Layers, ShieldCheck, CheckCircle, Database, Zap, Terminal } from 'lucide-react';
-import React from 'react';
-
-export const CAPABILITIES = [
-  {
-    icon: React.createElement(Code2, { className: "w-5 h-5" }),
-    title: 'Frontend Engineering',
-    focus: 'User experience, performance, and maintainability',
-    items: [
-      'Building responsive, accessible interfaces',
-      'Component-driven architecture with React',
-      'Type-safe development using TypeScript',
-      'Scalable design systems with TailwindCSS',
-      'Predictable state and clean UI logic'
-    ]
-  },
-  {
-    icon: React.createElement(Terminal, { className: "w-5 h-5" }),
-    title: 'Backend & API Development',
-    focus: 'Business logic and data integrity',
-    items: [
-      'Designing RESTful APIs with Laravel',
-      'Authentication and authorization flows',
-      'Granular Role-Based Access Control (RBAC)',
-      'Robust validation and error handling',
-      'Structuring logic for long-term maintainability'
-    ]
-  },
-  {
-    icon: React.createElement(Layers, { className: "w-5 h-5" }),
-    title: 'System Architecture',
-    focus: 'Designing systems that scale beyond MVPs',
-    items: [
-      'Separating frontend, backend, and data layers',
-      'React-Laravel integration (Inertia.js / APIs)',
-      'Designing admin-controlled content systems',
-      'Architectural planning for institutional scale'
-    ]
-  },
-  {
-    icon: React.createElement(Zap, { className: "w-5 h-5" }),
-    title: 'Realtime & Interactive Systems',
-    focus: 'Live user interaction',
-    items: [
-      'Real-time communication using Socket.IO',
-      'Live status updates and notifications',
-      'Interactive analytical dashboards',
-      'Synchronizing frontend with backend events'
-    ]
-  },
-  {
-    icon: React.createElement(Database, { className: "w-5 h-5" }),
-    title: 'Database & Data Modeling',
-    focus: 'Reliable data structures',
-    items: [
-      'Relational modeling (PostgreSQL / MySQL)',
-      'Defining strict consistency and constraints',
-      'Optimized indexing for growing datasets',
-      'Complex query design and data integrity'
-    ]
-  },
-  {
-    icon: React.createElement(ShieldCheck, { className: "w-5 h-5" }),
-    title: 'Admin & Content Management',
-    focus: 'Control and flexibility for organizations',
-    items: [
-      'Custom-built administrative engines',
-      'Granular control over all frontend content',
-      'Tenant and role management systems',
-      'UX designed for non-technical admins'
-    ]
-  },
-  {
-    icon: React.createElement(CheckCircle, { className: "w-5 h-5" }),
-    title: 'Project Ownership & Delivery',
-    focus: 'End-to-end responsibility',
-    items: [
-      'Translating requirements into working systems',
-      'Iterative improvement and feature expansion',
-      'Versioned development mindset',
-      'Clear documentation and system structure'
-    ]
-  }
-];
+import { Cpu, Layout, Layers, ShieldCheck, Database, Zap, CheckCircle2, Settings, Monitor, Server } from 'lucide-react';
 
 export const SKILLS = [
   {
@@ -105,7 +22,43 @@ export const SKILLS = [
     items: ['SEO Optimization', 'Web Core Vitals', 'Unit Testing (Jest)', 'Server-side Rendering', 'Edge Computing']
   }
 ];
-
+export const SKILLS_SYSTEMS = [
+  {
+    category: 'Frontend',
+    items: [
+      'JavaScript', 'TypeScript', 'React (TS) / Next.js', 'TailwindCSS', 'Framer Motion & gsap', 'Three.js'
+    ],
+    accent: '#3b82f6'
+  },
+  {
+    category: 'Backend',
+    items: [
+      'PHP', 'Laravel', 'Node.js', 'REST API Design', 'Authentication & RBAC'
+    ],
+    accent: '#06b6d4'
+  },
+  {
+    category: 'Database',
+    items: [
+      'PostgreSQL', 'MySQL', 'Relational Data Modeling', 'Schema Design & Constraints'
+    ],
+    accent: '#6366f1'
+  },
+  {
+    category: 'Realtime & Infra',
+    items: [
+      'Docker', 'Socket.io', 'Event-Driven Updates', 'API Integration Patterns', 'Performance Monitoring'
+    ],
+    accent: '#a855f7'
+  },
+  {
+    category: 'Mobile (Foundational)',
+    items: [
+      'Flutter', 'Kotlin', 'Mobile UI Design'
+    ],
+    accent: '#ec4899'
+  }
+];
 export const PROJECTS = [
   {
     title: 'Nexus OS',
@@ -203,5 +156,103 @@ export const EXPLORING = [
       { name: "Docker fundamentals", detail: "Containerization and local environments" },
       { name: "Deployment workflows", detail: "Dev / Staging / Production environments" }
     ]
+  }
+];
+
+export const navLinks = [
+  { name: 'About', href: '#about' },
+  { name: 'Evolution', href: '#evolution' },
+  { name: 'Capabilities', href: '#capabilities' },
+  { name: 'Architecture', href: '#architecture' },
+  { name: 'Experience', href: '#experience' },
+  { name: 'Exploring', href: '#exploring' },
+  { name: 'Contact', href: '#contact' },
+];
+export const CAPABILITY_GROUPS = [
+  {
+    title: 'Frontend Engineering',
+    focus: 'User experience, performance, and maintainability',
+    icon: Monitor,
+    items: [
+      'Designing responsive and accessible user interfaces',
+      'Component-driven architecture with clear boundaries',
+      'Type-safe frontend logic using TypeScript',
+      'Scalable styling systems with TailwindCSS',
+      'Predictable state and UI behavior'
+    ],    
+    accentColor: 'hsl(217, 91%, 60%)'
+  },
+  {
+    title: 'Backend & API Development',
+    focus: 'Business logic and data integrity',
+    icon: Server,
+    items: [
+      'Designing RESTful APIs with Laravel, Node, Go',
+      'Authentication and authorization flows',
+      'Role-based access control (RBAC)',
+      'Validation, error handling, and data flow',
+      'Structuring logic for long-term maintainability'
+    ],
+    accentColor: 'hsl(270, 60%, 55%)'
+  },
+  {
+    title: 'System Architecture',
+    focus: 'Designing systems that scale beyond MVPs',
+    icon: Layers,
+    items: [
+      'Separating frontend, backend, and data layers',
+      'Integrating React with Laravel via Inertia.js, axios',
+      'Designing admin-controlled and content-controlled systems',
+      'Planning for scalability in large multi-user platforms'
+    ],
+    accentColor: 'hsl(330, 70%, 55%)'
+  },
+  {
+    title: 'Realtime & Interactive Systems',
+    focus: 'Live user interaction',
+    icon: Zap,
+    items: [
+      'Real-time communication using Socket.IO',
+      'Live status updates and notifications',
+      'Interactive dashboards and data sync',
+      'Synchronizing frontend state with backend events'
+    ],
+    accentColor: 'hsl(45, 95%, 55%)'
+  },
+  {
+    title: 'Database & Data Modeling',
+    focus: 'Reliable data structures',
+    icon: Database,
+    items: [
+      'PostgreSQL schema design',
+      'Relational data modeling',
+      'Data consistency and constraints',
+      'Query optimization for growing systems'
+    ],
+    accentColor: 'hsl(160, 70%, 45%)'
+  },
+  {
+    title: 'Admin & Content Management',
+    focus: 'Control and flexibility for organizations',
+    icon: Settings,
+    items: [
+      'Custom admin dashboards',
+      'Full control over frontend content',
+      'Managing tenants, users, and roles',
+      'Supporting non-technical administrators'
+    ],
+    accentColor: 'hsl(180, 70%, 50%)'
+  },
+  {
+    title: 'Project Ownership & Delivery',
+    focus: 'End-to-end responsibility',
+    icon: CheckCircle2,
+    items: [
+      'Translating requirements into working systems',
+      'Iterative improvement and UI refinement',
+      'Versioned development mindset',
+      'Clear documentation and structure'
+    ],
+    accentColor: 'hsl(25, 95%, 55%)'
   }
 ];

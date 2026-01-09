@@ -224,7 +224,7 @@ const DistortionImage: React.FC<DistortionImageProps> = ({
   return (
     <div
       ref={containerRef}
-      className={`relative w-full h-full overflow-hidden ${className}`}
+      className={`relative w-full h-full overflow-hidden grayscale ${className}`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     />

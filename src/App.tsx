@@ -9,6 +9,8 @@ import { Capabilities } from "./sections/Capabilities";
 import { Architecture } from "./sections/Architecture";
 import { Experience } from "./sections/Experience";
 import { Exploring } from "./sections/Exploring";
+import { Footer } from "./components/Footer";
+import { Skills } from "./sections/Skills";
 
 const App: React.FC = () => {
   return (
@@ -19,19 +21,14 @@ const App: React.FC = () => {
           <Hero />
           <About />
           <Evolution />
+          <Skills />
           <Capabilities />
           <Architecture />
           <Experience />
           <Exploring />
           <Contact />
         </main>
-
-        <footer className="py-10 text-center border-t border-white/5 text-gray-500 text-sm">
-          <p>
-            © {new Date().getFullYear()} Dawit Haile. Built with Passion &
-            React.
-          </p>
-        </footer>
+        <Footer />
       </div>
     </div>
   );

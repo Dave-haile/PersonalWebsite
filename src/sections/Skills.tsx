@@ -93,130 +93,140 @@
 //     </section>
 //   );
 // };
-import { motion } from "framer-motion";
 
-const skillGroups = [
-  {
-    title: "Frontend Systems",
-    subtitle: "Interfaces & interaction",
-    description:
-      "Designing and building responsive, accessible interfaces with a strong focus on component architecture, motion, and user experience.",
-    skills: [
-      "React (TypeScript)",
-      "Tailwind CSS",
-      "Framer Motion / GSAP",
-      "Component Architecture",
-      "Responsive Design",
-    ],
-  },
-  {
-    title: "Backend & Data",
-    subtitle: "Logic & reliability",
-    description:
-      "Building secure and scalable backend systems, designing APIs, handling authentication, and modeling data to support real-world applications.",
-    skills: [
-      "Laravel / Node.js",
-      "REST APIs",
-      "Authentication",
-      "PostgreSQL / MySQL",
-      "Data Modeling",
-    ],
-  },
-  {
-    title: "Real-Time & Interaction",
-    subtitle: "Motion, particles, live systems",
-    description:
-      "Exploring advanced interactions through real-time communication, animations, and experimental visual systems.",
-    skills: [
-      "Socket.io",
-      "Web Animations",
-      "Particles & Effects",
-      "Three.js (basic)",
-      "Real-time Updates",
-    ],
-  },
-  {
-    title: "Engineering Mindset",
-    subtitle: "How I approach problems",
-    description:
-      "Thinking in systems, writing maintainable code, debugging under pressure, and continuously learning through experimentation.",
-    skills: [
-      "System Thinking",
-      "Clean Architecture",
-      "Performance Awareness",
-      "Problem Solving",
-      "Continuous Learning",
-    ],
-  },
-];
 
-const Skills = () => {
+
+import React from 'react';
+import { motion, type Variants } from 'framer-motion';
+import { SKILLS_SYSTEMS } from '../constants';
+
+export const Skills: React.FC = () => {
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const bandVariants: Variants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.16, 1, 0.3, 1]
+      }
+    }
+  };
+
   return (
-    <section className="relative py-32 px-6 md:px-16 bg-background">
-      {/* Section label */}
-      <span className="block text-xs uppercase tracking-[0.3em] text-foreground/40 mb-6">
-        Skills
-      </span>
+    <section id="skills" className="relative py-32 bg-black overflow-hidden border-t border-white/5">
+      <div className="container mx-auto px-6 md:px-12 relative z-10">
 
-      {/* Heading */}
-      <motion.h2
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="text-4xl md:text-6xl font-display font-bold mb-6"
-      >
-        Current Capabilities
-      </motion.h2>
-
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-        viewport={{ once: true }}
-        className="max-w-2xl text-lg text-muted-foreground mb-16"
-      >
-        A snapshot of the systems I design and the tools I use to build
-        reliable, interactive, and scalable web applications.
-      </motion.p>
-
-      {/* Skills grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {skillGroups.map((group, i) => (
+        {/* Header Section */}
+        <div className="mb-24 flex flex-col items-start max-w-4xl">
           <motion.div
-            key={group.title}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: i * 0.1 }}
+            initial={{ opacity: 0, x: -10 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="glass rounded-2xl p-8 relative overflow-hidden"
+            className="mb-8 flex items-center gap-6"
           >
-            {/* subtle background accent */}
-            <div className="absolute inset-0 bg-linear-to-br from-primary/[0.03] to-transparent pointer-events-none" />
-
-            <h3 className="text-2xl font-display font-semibold mb-2">
-              {group.title}
-            </h3>
-            <p className="text-primary/70 mb-4">{group.subtitle}</p>
-            <p className="text-muted-foreground mb-6 leading-relaxed">
-              {group.description}
-            </p>
-
-            <ul className="flex flex-wrap gap-3">
-              {group.skills.map((skill) => (
-                <li
-                  key={skill}
-                  className="px-3 py-1 text-sm rounded-full bg-white/5 border border-white/10 text-foreground/80"
-                >
-                  {skill}
-                </li>
-              ))}
-            </ul>
+            <span className="text-[10px] font-bold uppercase tracking-[0.6em] text-zinc-500">
+              Technical Stack
+            </span>
+            <div className="h-px w-24 bg-zinc-900" />
           </motion.div>
-        ))}
+
+          <motion.h2
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="text-4xl md:text-6xl font-display font-bold mb-8 tracking-tighter text-white"
+          >
+            Engineering <span className="text-zinc-600">Core.</span>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="text-zinc-500 text-lg md:text-xl font-light leading-relaxed max-w-2xl border-l border-zinc-900 pl-8"
+          >
+            The tools and frameworks I use to build reliable, scalable systems in production environments.
+          </motion.p>
+        </div>
+
+        {/* Technical Bands - Editorial Grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="flex flex-col"
+        >
+          {SKILLS_SYSTEMS.map((system, index) => (
+            <motion.div
+              key={system.category}
+              variants={bandVariants}
+              className="group relative flex flex-col md:grid md:grid-cols-12 gap-6 py-12 border-b border-zinc-900 last:border-0 hover:bg-zinc-950/30 transition-colors duration-500"
+            >
+              {/* Left Column: Domain Label */}
+              <div className="md:col-span-4 flex flex-col gap-1 pr-8">
+                <span className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest mb-2 group-hover:text-blue-500/50 transition-colors">
+                  Domain / 0{index + 1}
+                </span>
+                <h3 className="text-2xl md:text-3xl font-display font-bold text-white group-hover:translate-x-2 transition-transform duration-500">
+                  {system.category}
+                </h3>
+              </div>
+
+              {/* Right Column: Technology Clusters */}
+              <div className="md:col-span-8 flex flex-wrap items-center gap-x-4 gap-y-3">
+                {system.items.map((tech, i) => (
+                  <React.Fragment key={tech}>
+                    <span className="text-zinc-400 font-light text-lg md:text-xl hover:text-white transition-colors cursor-default">
+                      {tech}
+                    </span>
+                    {i < system.items.length - 1 && (
+                      <span className="text-zinc-800 font-mono text-sm">/</span>
+                    )}
+                  </React.Fragment>
+                ))}
+              </div>
+
+              {/* Subtle accent border on hover */}
+              <motion.div
+                initial={{ scaleY: 0 }}
+                whileHover={{ scaleY: 1 }}
+                style={{ backgroundColor: system.accent }}
+                className="absolute left-0 top-0 bottom-0 w-1 origin-top transition-all duration-500"
+              />
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Footer Specification */}
+        <div className="mt-32 pt-12 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="flex items-center gap-4 text-[10px] font-mono text-zinc-600 uppercase tracking-widest">
+            <div className="w-1.5 h-1.5 rounded-full bg-blue-500/50" />
+            <span>High Performance Defaults</span>
+            <span className="text-zinc-800">|</span>
+            <span>Security Minded</span>
+          </div>
+          <div className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest text-right">
+            Revision // 2024.Arch.01
+          </div>
+        </div>
       </div>
+
+      {/* Background Vertical Guidelines */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-full bg-linear-to-b from-transparent via-zinc-900 to-transparent opacity-30 pointer-events-none" />
     </section>
   );
 };
-
-export default Skills;

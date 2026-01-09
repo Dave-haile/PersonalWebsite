@@ -385,7 +385,7 @@ const Evolution: React.FC = () => {
     });
 
     return (
-        <section ref={targetRef} className="relative h-[400vh] bg-black">
+        <section id='evolution' ref={targetRef} className="relative h-[400vh] bg-black">
             <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
 
                 {/* 3D Visual Layer */}
@@ -432,7 +432,7 @@ const Evolution: React.FC = () => {
                                     transition={{ duration: 0.6, delay: 0.1 }}
                                     className="mb-4"
                                 >
-                                    <span className="text-blue-400/60 font-bold tracking-[0.2em] text-[10px] uppercase">
+                                    <span className="text-zinc-400/60 font-bold tracking-[0.2em] text-[10px] uppercase">
                                         {phase.subtitle}
                                     </span>
                                 </motion.div>
@@ -504,7 +504,7 @@ const PhaseNumber: React.FC<{ progress: MotionValue<number> }> = ({ progress }) 
                 ease: "easeOut"
             }}
             style={{
-                color: "#60a5fa"
+                color: "#9f9fa9"
             }}
         >
             {val}

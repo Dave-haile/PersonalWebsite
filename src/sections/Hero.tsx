@@ -1,39 +1,105 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { motion, type Variants } from "framer-motion";
 import ParticleSignature from "../components/ParticleSignature";
 import StarField from "../components/StarField";
 
-const AnimatedName = ({ name }: { name: string }) => {
-  const letterVariants: Variants = {
-    hidden: { y: 100, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        ease: [0.22, 1, 0.36, 1],
-      },
-    },
+const InteractiveLetter = ({ char }: { char: string }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [colorStyle, setColorStyle] = useState({});
+  const rotationValue = 3; // Fixed rotation for hover effect
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+    const hue1 = Math.floor(Math.random() * 360);
+    const hue2 = (hue1 + 40) % 360;
+
+    setColorStyle({
+      backgroundImage: `linear-gradient(90deg, hsl(${hue1}, 95%, 60%), hsl(${hue2}, 95%, 60%))`,
+      WebkitBackgroundClip: 'text',
+      backgroundClip: 'text',
+      color: 'transparent',
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setTimeout(() => {
+      setColorStyle({});
+    }, 500);
   };
 
   return (
-    <div className="flex overflow-hidden">
-      {name.split("").map((char, i) => (
-        <motion.span
+    <motion.span
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      style={isHovered ? colorStyle : undefined}
+      animate={isHovered ? {
+        y: -10,
+        scale: 1.2,
+        rotate: rotationValue
+      } : {
+        y: 0,
+        scale: 1,
+        rotate: 0
+      }}
+      transition={{ type: "spring", stiffness: 300, damping: 15 }}
+      className={`inline-block cursor-default select-none transition-colors duration-300 ${isHovered ? 'animate-gradient-text' : ''}`}
+    >
+      {char}
+    </motion.span>
+  );
+};
+
+const InteractiveTitle = ({ textLines }: { textLines: string[] }) => {
+  // Stagger effect for the initial load
+  const container = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const child = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring" as const,
+        damping: 12,
+        stiffness: 100
+      }
+    }
+  };
+
+  return (
+    <>
+      {textLines.map((line, i) => (
+        <motion.div
           key={i}
-          variants={letterVariants}
-          whileHover={{
-            y: -10,
-            color: "#60a5fa",
-            transition: { duration: 0.2 }
-          }}
-          className="inline-block transition-colors duration-300 cursor-default"
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          className="flex justify-start flex-wrap gap-x-4 md:gap-x-6 mb-2"
         >
-          {char === " " ? "\u00A0" : char}
-        </motion.span>
+          {line.split(" ").map((word, wi) => (
+            <span key={wi} className="inline-flex whitespace-nowrap">
+              {word.split("").map((char, ci) => (
+                <motion.span key={ci} variants={child}>
+                  <InteractiveLetter char={char} />
+                </motion.span>
+              ))}
+            </span>
+          ))}
+        </motion.div>
       ))}
-    </div>
+    </>
   );
 };
 
@@ -48,6 +114,11 @@ export const Hero: React.FC = () => {
       },
     },
   };
+
+  const headerText = [
+    "Dawit",
+    "Haile"
+  ]
 
   return (
     <section id="home" className="relative h-screen flex items-center px-8 md:px-24 overflow-hidden bg-black">
@@ -70,7 +141,7 @@ export const Hero: React.FC = () => {
           transition={{ duration: 1 }}
         >
           <h2 className="text-zinc-500 uppercase tracking-[0.4em] text-[10px] mb-8 font-bold opacity-70">
-            Full Stack Architect
+            FULL STACK ARCHITECTURE
           </h2>
         </motion.div>
 
@@ -80,8 +151,8 @@ export const Hero: React.FC = () => {
           animate="visible"
           className="text-7xl md:text-[8.5rem] font-display font-bold tracking-tighter leading-[0.85] mb-10 text-white"
         >
-          <AnimatedName name="Dawit" />
-          <AnimatedName name="Haile" />
+
+          <InteractiveTitle textLines={headerText} />
         </motion.h1>
 
         <motion.p
@@ -90,8 +161,8 @@ export const Hero: React.FC = () => {
           transition={{ delay: 1.5, duration: 1 }}
           className="text-zinc-400 text-lg md:text-xl font-light leading-relaxed max-w-lg mb-14"
         >
-          Engineering the digital nexus where performance meets
-          high-fidelity interactive design.
+          {/* Designing and engineering scalable web systems with thoughtful interfaces and resilient backend architecture. */}
+          I build modern web systems — from architecture and APIs to interfaces and interaction.
         </motion.p>
 
         <motion.div
@@ -102,7 +173,7 @@ export const Hero: React.FC = () => {
         >
           <a href="#projects" className="group relative px-12 py-5 bg-white text-black font-bold rounded-full overflow-hidden transition-transform active:scale-95">
             <span className="relative z-10">View Work</span>
-            <div className="absolute inset-0 bg-blue-400 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
+            <div className="absolute inset-0 bg-zinc-400 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
           </a>
           <a href="#contact" className="px-12 py-5 bg-transparent border border-white/10 text-white font-bold rounded-full hover:bg-white/5 transition-all active:scale-95">
             Collaborate

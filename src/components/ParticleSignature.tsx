@@ -17,43 +17,85 @@ const ParticleSignature = () => {
         const spacing = scale * 1.5;
 
         for (let i = 0; i < count; i++) {
-            let x = 0, y = 0;
-            const charIndex = i % 5;
-            const subSegment = i % 3;
+            // let x = 0, y = 0;
+            // const charIndex = i % 5;
+            // const subSegment = i % 3;
 
-            const charOffset = (charIndex - 2) * spacing;
+            // const charOffset = (charIndex - 2) * spacing;
+            // const baseX = centerX + charOffset;
+
+            // if (charIndex === 0) { // N
+            //     if (subSegment === 0) { x = baseX - scale * 0.5; y = (Math.random() - 0.5) * scale * 2; }
+            //     else if (subSegment === 1) { x = baseX + scale * 0.5; y = (Math.random() - 0.5) * scale * 2; }
+            //     else { x = baseX - scale * 0.5 + Math.random() * scale; y = scale - (x - (baseX - scale * 0.5)) * 2; }
+            // } else if (charIndex === 1) { // E
+            //     if (subSegment === 0) { x = baseX - scale * 0.5; y = (Math.random() - 0.5) * scale * 2; }
+            //     else {
+            //         x = baseX - scale * 0.5 + Math.random() * scale;
+            //         const row = Math.floor(Math.random() * 3);
+            //         y = row === 0 ? scale : row === 1 ? 0 : -scale;
+            //     }
+            // } else if (charIndex === 2) { // X
+            //     const diag = Math.random() > 0.5 ? 1 : -1;
+            //     y = (Math.random() - 0.5) * scale * 2;
+            //     x = baseX + (y / scale) * scale * 0.5 * diag;
+            // } else if (charIndex === 3) { // U
+            //     if (subSegment === 0) { x = baseX - scale * 0.5; y = Math.random() * scale * 2 - scale * 0.2; }
+            //     else if (subSegment === 1) { x = baseX + scale * 0.5; y = Math.random() * scale * 2 - scale * 0.2; }
+            //     else { x = baseX - scale * 0.5 + Math.random() * scale; y = -scale; }
+            // } else if (charIndex === 4) { // S
+            //     const row = Math.random();
+            //     if (row < 0.3) { x = baseX - scale * 0.5 + Math.random() * scale; y = scale; }
+            //     else if (row < 0.6) { x = baseX - scale * 0.5 + Math.random() * scale; y = 0; }
+            //     else if (row < 0.9) { x = baseX - scale * 0.5 + Math.random() * scale; y = -scale; }
+            //     else { x = Math.random() > 0.5 ? baseX - scale * 0.5 : baseX + scale * 0.5; y = (Math.random() - 0.5) * scale * 2; }
+            // }
+
+            let x = 0, y = 0;
+            const charIndex = i % 3;
+            const subSegment = i % 5;
+
+            const charOffset = (charIndex - 1) * spacing;
             const baseX = centerX + charOffset;
 
-            if (charIndex === 0) { // N
-                if (subSegment === 0) { x = baseX - scale * 0.5; y = (Math.random() - 0.5) * scale * 2; }
-                else if (subSegment === 1) { x = baseX + scale * 0.5; y = (Math.random() - 0.5) * scale * 2; }
-                else { x = baseX - scale * 0.5 + Math.random() * scale; y = scale - (x - (baseX - scale * 0.5)) * 2; }
-            } else if (charIndex === 1) { // E
-                if (subSegment === 0) { x = baseX - scale * 0.5; y = (Math.random() - 0.5) * scale * 2; }
-                else {
-                    x = baseX - scale * 0.5 + Math.random() * scale;
-                    const row = Math.floor(Math.random() * 3);
-                    y = row === 0 ? scale : row === 1 ? 0 : -scale;
+            if (charIndex === 0) { // D
+                if (subSegment === 0) { // Vertical spine
+                    x = baseX - scale * 0.5;
+                    y = (Math.random() - 0.5) * scale * 2;
+                } else { // Curved part
+                    const angle = (Math.random() - 0.5) * Math.PI;
+                    x = baseX - scale * 0.5 + Math.cos(angle) * scale;
+                    y = Math.sin(angle) * scale;
                 }
-            } else if (charIndex === 2) { // X
-                const diag = Math.random() > 0.5 ? 1 : -1;
-                y = (Math.random() - 0.5) * scale * 2;
-                x = baseX + (y / scale) * scale * 0.5 * diag;
-            } else if (charIndex === 3) { // U
-                if (subSegment === 0) { x = baseX - scale * 0.5; y = Math.random() * scale * 2 - scale * 0.2; }
-                else if (subSegment === 1) { x = baseX + scale * 0.5; y = Math.random() * scale * 2 - scale * 0.2; }
-                else { x = baseX - scale * 0.5 + Math.random() * scale; y = -scale; }
-            } else if (charIndex === 4) { // S
-                const row = Math.random();
-                if (row < 0.3) { x = baseX - scale * 0.5 + Math.random() * scale; y = scale; }
-                else if (row < 0.6) { x = baseX - scale * 0.5 + Math.random() * scale; y = 0; }
-                else if (row < 0.9) { x = baseX - scale * 0.5 + Math.random() * scale; y = -scale; }
-                else { x = Math.random() > 0.5 ? baseX - scale * 0.5 : baseX + scale * 0.5; y = (Math.random() - 0.5) * scale * 2; }
+            } else if (charIndex === 1) { // H
+                if (subSegment === 0) { // Left vertical
+                    x = baseX - scale * 0.5;
+                    y = (Math.random() - 0.5) * scale * 2;
+                } else if (subSegment === 1) { // Right vertical
+                    x = baseX + scale * 0.5;
+                    y = (Math.random() - 0.5) * scale * 2;
+                } else { // Middle horizontal
+                    x = baseX + (Math.random() - 0.5) * scale;
+                    y = 0;
+                }
+            } else if (charIndex === 2) { // S
+                const seg = Math.random();
+                if (seg < 0.2) { // Top
+                    x = baseX - scale * 0.5 + Math.random() * scale; y = scale;
+                } else if (seg < 0.4) { // Middle
+                    x = baseX - scale * 0.5 + Math.random() * scale; y = 0;
+                } else if (seg < 0.6) { // Bottom
+                    x = baseX - scale * 0.5 + Math.random() * scale; y = -scale;
+                } else if (seg < 0.8) { // Top-Left Join
+                    x = baseX - scale * 0.5; y = Math.random() * scale;
+                } else { // Bottom-Right Join
+                    x = baseX + scale * 0.5; y = -Math.random() * scale;
+                }
             }
 
             t[i * 3] = x;
             t[i * 3 + 1] = y;
-            t[i * 3 + 2] = (Math.random() - 0.5) * 0.2;
+            t[i * 3 + 2] = (Math.random() - 0.5) * 0.5;
         }
         return t;
     }, [count, viewport]);
