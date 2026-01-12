@@ -104,6 +104,17 @@ const InteractiveTitle = ({ textLines }: { textLines: string[] }) => {
 };
 
 export const Hero: React.FC = () => {
+  const btnEl = document.querySelector(".btn-hover-effect");
+
+    btnEl?.addEventListener("mouseover", (event) => {
+      const x = event.pageX - btnEl.offsetLeft;
+      const y = event.pageY - btnEl.offsetTop;
+
+      btnEl.style.setProperty("--xPos", x + "px");
+      btnEl.style.setProperty("--yPos", y + "px");
+    });
+
+
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -171,7 +182,10 @@ export const Hero: React.FC = () => {
           transition={{ delay: 1.8, duration: 0.8 }}
           className="flex flex-wrap gap-6"
         >
-          <a href="#projects" className="group relative px-12 py-5 bg-white text-black font-bold rounded-full overflow-hidden transition-transform active:scale-95">
+          <a
+            href="#projects"
+            className="relative px-12 py-5 bg-white text-black font-bold rounded-full overflow-hidden transition-transform btn-hover-effect"
+          >
             <span className="relative z-10">View Work</span>
             <div className="absolute inset-0 bg-zinc-400 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
           </a>

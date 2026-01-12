@@ -71,3 +71,26 @@
     --foreground: 0 0% 98%;
   }
 }
+
+.btn-hover-effect::before {
+  content: "";
+  position: absolute;
+  background-color: #020618; 
+  width: 0;
+  height: 0;
+  left: var(--xPos);
+  top: var(--yPos);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  transition: width 0.5s, height 0.5s;
+  z-index: 0;
+  pointer-events: none;
+  color: antiquewhite;
+}
+
+.btn-hover-effect:hover::before {
+  width: 300px; /* Expanded size */
+  height: 300px; /* Expanded size */
+  opacity: 1; /* Ensure opacity is 1 on hover */
+  color: #fff;
+}

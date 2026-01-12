@@ -14,6 +14,10 @@ export const Footer: React.FC = () => {
     const firstNav = navLinks.slice(0, midIndex)
     const lastNav = navLinks.slice(midIndex)
 
+    const service = [
+'Frontend Architecture', 'Backend Systems', 'Interactive Design', 'Networking', 'ERPNext Implementation'
+    ]
+
     return (
         <footer className="relative bg-black pt-24 pb-12 overflow-hidden border-t border-white/5">
             {/* Background Decor */}
@@ -95,7 +99,7 @@ export const Footer: React.FC = () => {
                         <div className="space-y-6">
                             <h4 className="text-[10px] uppercase tracking-[0.4em] font-bold text-zinc-600">Services</h4>
                             <ul className="space-y-4">
-                                {['Frontend Architecture', 'Backend Systems', 'Interactive Design', 'Networking'].map((item) => (
+                                {service.map((item) => (
                                     <li key={item}>
                                         <span className="text-zinc-400 text-sm">{item}</span>
                                     </li>
