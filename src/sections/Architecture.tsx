@@ -7,35 +7,35 @@ const LAYERS = [
     id: 'layer-01',
     title: 'Frontend Layer',
     tech: 'React / TypeScript / Tailwind',
-    description: 'Precision-engineered interfaces focusing on performance, maintainable component architecture, and seamless user journeys.',
+    description: 'Interfaces built with a strong focus on clarity, performance, and maintainability. I prioritize clean component boundaries, predictable state, and UI that remains understandable as the system grows.',
     icon: Layout
   },
   {
     id: 'layer-02',
     title: 'Application Layer',
-    tech: 'Laravel / REST / Inertia.js',
-    description: 'Robust server-side logic with clean separation of concerns, providing the bridge between data and interactive frontend states.',
+    tech: 'Laravel / Node / Python / REST / Inertia.js / Axios',
+    description: 'The core business logic layer that connects the frontend to the data. I structure controllers, services, and APIs to remain readable, testable, and easy to extend as requirements evolve.',
     icon: Cpu
   },
   {
     id: 'layer-03',
     title: 'Real-time & Interaction',
     tech: 'WebSockets / Socket.io',
-    description: 'Live communication systems for instant updates, status tracking, and collaborative environments.',
+    description: 'Real-time communication for features that require immediate feedback — such as status changes, notifications, and live system updates — without overcomplicating the overall architecture.',
     icon: Activity
   },
   {
     id: 'layer-04',
     title: 'Data Layer',
-    tech: 'PostgreSQL / Complex Schemas',
-    description: 'Structured, relational data modeling with role-aware access control and optimized query performance.',
+    tech: 'PostgreSQL /MySQL / SQLServer / Complex Schemas / ',
+    description: 'Relational data models designed for consistency, clarity, and access control. I focus on correct relationships, constraints, and queries that remain reliable as data volume increases.',
     icon: Database
   },
   {
     id: 'layer-05',
     title: 'Administration Layer',
     tech: 'Custom Admin Dashboards',
-    description: 'Full-control systems for content management, user permissions, and institutional oversight.',
+    description: 'Custom-built administrative tools that give organizations full control over content, users, and permissions — without relying on third-party CMS platforms.',
     icon: ShieldCheck
   }
 ];
@@ -45,14 +45,14 @@ const PROOFS = [
     title: 'Dembel City Center',
     category: 'Mall Management Platform',
     meta: 'Built with Laravel + React + Inertia.js',
-    description: 'A large-scale commercial system for a major mall with 600+ tenants. I designed the architecture to handle everything from dynamic tenant directories and event news to vacancy management and real-time administrative oversight.',
+    description: 'A large-scale commercial platform built for a major shopping mall with over 600 tenants. The system centralizes tenant information, event announcements, vacancy listings, and site content, all managed through a custom admin interface designed for non-technical staff.',
     highlights: ['600+ Tenant Database', 'Dynamic Vacancy System', 'Centralized Content Control']
   },
   {
     title: 'University Clearance System',
     category: 'Institutional Digital Workflow',
     meta: 'React (TS) + Laravel + PostgreSQL',
-    description: 'Designed to digitize legacy paper-based university processes. This system manages role-based approvals across multiple departments, drastically reducing administrative delays and improving audit trails.',
+    description: 'A digital replacement for a manual, paper-based university clearance process. The system coordinates approvals across multiple departments using role-based access control, creating a clear audit trail and significantly reducing processing time.',
     highlights: ['Multi-department Approvals', 'RBAC Security', 'Automated Audit Trails']
   }
 ];
@@ -79,7 +79,7 @@ export const Architecture: React.FC = () => {
             className="text-5xl md:text-7xl font-display font-bold text-white mb-8 tracking-tighter"
           >
             How I Build <br />
-            <span className="text-zinc-500 italic">Scalable Systems</span>
+            <span className="text-zinc-500 italic">Production System</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -87,7 +87,8 @@ export const Architecture: React.FC = () => {
             viewport={{ once: true }}
             className="text-zinc-400 text-lg md:text-xl font-light leading-relaxed max-w-2xl"
           >
-            From backend architecture to user-focused interfaces, I design systems that scale in real environments, ensuring long-term resilience and operational efficiency.
+            {/* From backend architecture to user-focused interfaces, I design systems that scale in real environments, ensuring long-term resilience and operational efficiency. */}
+            I design and build systems the way they are actually used in the real world — with clear separation of concerns, predictable data flow, and long-term maintainability in mind. Every layer exists for a reason, and every decision is made to support growth, change, and real users.
           </motion.p>
         </div>
 
@@ -174,7 +175,7 @@ export const Architecture: React.FC = () => {
                 className="p-8 rounded-4xl border border-dashed border-white/5 flex items-center justify-center group cursor-pointer hover:bg-white/2 transition-colors"
               >
                 <p className="text-zinc-600 text-xs font-bold uppercase tracking-widest group-hover:text-zinc-400 transition-colors">
-                  Explore Full Engineering Archive
+                Explore Architecture & Implementation Details
                 </p>
               </motion.div>
             </div>

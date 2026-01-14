@@ -65,9 +65,7 @@ export const Exploring: React.FC = () => {
                   transition={{ delay: 0.2 }}
                   className="text-zinc-500 text-lg font-light leading-relaxed max-w-md"
                 >
-                  This section represents my current roadmap for engineering growth.
-                  I am actively experimenting with these technologies to broaden my
-                  architectural perspective and system design capabilities.
+                  This is my current engineering roadmap—tools and frameworks I'm actively mastering to strengthen my system design, architecture, and full-stack expertise. Each technology reflects hands-on exploration with real-world patterns.
                 </motion.p>
               </div>
             </div>

@@ -18,9 +18,5 @@ export default defineConfig({
       port: 5173,
       strictPort: true,
       cors: true,       // ✅ allow cross-origin requests
-      hmr: {
-          host: '192.168.25.206', // import from env
-          protocol: 'ws',          // WebSocket for HMR
-      },
     }
 })

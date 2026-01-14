@@ -103,16 +103,50 @@ const InteractiveTitle = ({ textLines }: { textLines: string[] }) => {
   );
 };
 
+
+const RippleButton: React.FC = () => {
+  const handleMouseMove = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    e.currentTarget.style.setProperty("--xPos", `${x}px`);
+    e.currentTarget.style.setProperty("--yPos", `${y}px`);
+  };
+
+  return (
+    <a
+      href="#projects"
+      onMouseMove={handleMouseMove}
+      className="
+        group relative px-12 py-5 bg-white font-bold rounded-full
+        overflow-hidden transition-transform duration-300
+        border-none outline-none focus:outline-none
+
+        before:absolute before:content-[''] before:w-0 before:h-0
+        before:rounded-full before:bg-black
+        before:left-[var(--xPos)] before:top-[var(--yPos)]
+        before:-translate-x-1/2 before:-translate-y-1/2
+        before:transition-all before:duration-700
+        hover:before:w-[300px] hover:before:h-[300px]
+      "
+    >
+      <span className="
+        relative z-10 text-black
+        transition-colors duration-300
+        group-hover:text-white
+      ">
+        View Work
+      </span>
+    </a>
+  );
+};
+
+
 export const Hero: React.FC = () => {
-  const btnEl = document.querySelector(".btn-hover-effect");
-
-    btnEl?.addEventListener("mouseover", (event) => {
-      const x = event.pageX - btnEl.offsetLeft;
-      const y = event.pageY - btnEl.offsetTop;
-
-      btnEl.style.setProperty("--xPos", x + "px");
-      btnEl.style.setProperty("--yPos", y + "px");
-    });
 
 
   const containerVariants: Variants = {
@@ -130,6 +164,7 @@ export const Hero: React.FC = () => {
     "Dawit",
     "Haile"
   ]
+
 
   return (
     <section id="home" className="relative h-screen flex items-center px-8 md:px-24 overflow-hidden bg-black">
@@ -182,13 +217,7 @@ export const Hero: React.FC = () => {
           transition={{ delay: 1.8, duration: 0.8 }}
           className="flex flex-wrap gap-6"
         >
-          <a
-            href="#projects"
-            className="relative px-12 py-5 bg-white text-black font-bold rounded-full overflow-hidden transition-transform btn-hover-effect"
-          >
-            <span className="relative z-10">View Work</span>
-            <div className="absolute inset-0 bg-zinc-400 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out"></div>
-          </a>
+          <RippleButton/>
           <a href="#contact" className="px-12 py-5 bg-transparent border border-white/10 text-white font-bold rounded-full hover:bg-white/5 transition-all active:scale-95">
             Collaborate
           </a>

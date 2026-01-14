@@ -94,67 +94,67 @@ export const EXPERIENCE = [
   {
     title: 'Dembel City Center Platform',
     context: 'Commercial System · Full-Stack Developer',
-    description: 'Designed and developed a web platform for one of the largest shopping malls, serving over 600 tenants and a wide public audience.',
+    description: 'Designed and built a full-scale web platform for one of the largest shopping malls in the region, supporting over 600 tenants and a high-traffic public-facing site.',
     responsibilities: [
-      'Engineered a data-driven architecture for dynamic mall operations',
-      'Developed a comprehensive Admin dashboard for granular content management',
-      'Implemented role-based content control to secure tenant data',
-      'Crafted interfaces for Tenants, Events, Vacancies, and Public Services'
+      'Designed a structured backend architecture to support dynamic mall content and operations',
+      'Built a custom admin dashboard enabling non-technical staff to manage tenants, events, vacancies, and site content',
+      'Implemented role-based access control to secure tenant data and administrative actions',
+      'Developed public-facing interfaces for tenants, events, vacancy listings, and mall services'
     ],
     tech: ['Laravel', 'React', 'Inertia.js', 'MySQL'],
-    period: '2023 - 2024'
+    period: '2025'
   },
   {
     title: 'University Clearance Management System',
     context: 'Academic System · Full-Stack Developer',
-    description: 'Digitized a fully manual university clearance process involving multiple departments into a centralized, role-based web system.',
+    description: 'Designed and implemented a centralized web system to replace a fully manual university clearance process involving multiple departments and approval stages.',
     responsibilities: [
-      'Architected backend system design and scalable API logic',
-      'Developed robust authentication and cross-departmental role management',
-      'Modeled PostgreSQL schemas for complex academic data relationships',
-      'Iterative UI/UX refinement based on stakeholder feedback'
+      'Designed backend architecture and API structure to support multi-department approval workflows',
+      'Implemented authentication and role-based access control for students, staff, and administrators',
+      'Designed PostgreSQL schemas to handle complex academic relationships and clearance states',
+      'Refined UI and workflows through iterative feedback from academic staff and users'
     ],
     tech: ['React (TypeScript)', 'Tailwind CSS', 'Laravel', 'PostgreSQL'],
-    period: '2022 - 2023'
+    period: '2025'
   }
 ];
 export const EXPLORING = [
   {
     category: "Python Backend",
     items: [
-      { name: "Flask", detail: "Minimal backend control and request lifecycles" },
-      { name: "Django", detail: "Structured backend systems and full-stack patterns" },
-      { name: "FastAPI", detail: "Modern async APIs and performance-oriented services" }
+      { name: "Flask", detail: "Building lightweight APIs and understanding request-response cycles" },
+      { name: "Django", detail: "Designing structured, maintainable backend systems with full-stack patterns" },
+      { name: "FastAPI", detail: "Developing high-performance async APIs with modern Python frameworks" }
     ]
   },
   {
     category: "Frontend & Meta Frameworks",
     items: [
-      { name: "Vue", detail: "Alternative component mental model" },
-      { name: "Nuxt", detail: "SSR, routing, and SEO-aware architecture" },
-      { name: "Next.js", detail: "Production-grade React and data fetching patterns" }
+      { name: "Vue", detail: "Exploring Vue’s reactive component architecture and state management" },
+      { name: "Nuxt", detail: "Implementing server-side rendering, routing, and SEO-optimized frontend apps" },
+      { name: "Next.js", detail: "Building production-ready React applications with advanced data-fetching strategies" }
     ]
   },
   {
     category: "Mobile Development",
     items: [
-      { name: "Flutter", detail: "Cross-platform apps; hands-on small projects for learning patterns" },
-      { name: "Kotlin", detail: "Native Android basics; explored building simple apps" }
+      { name: "Flutter", detail: "Developing cross-platform apps to understand component and state management patterns" },
+      { name: "Kotlin", detail: "Learning native Android development and building foundational apps" }
     ]
   },
   {
     category: "Backend & Systems",
     items: [
-      { name: "Go", detail: "Performance, concurrency, and system design" },
-      { name: "Real-time systems", detail: "WebSockets and event-driven communication" },
-      { name: "System design", detail: "API boundaries and architecture decisions" }
+      { name: "Go", detail: "Designing high-performance concurrent systems and scalable APIs" },
+      { name: "Real-time systems", detail: "Implementing real-time, event-driven communication for collaborative systems" },
+      { name: "System design", detail: "Structuring APIs and designing resilient system architectures" }
     ]
   },
   {
     category: "Infrastructure Awareness",
     items: [
-      { name: "Docker fundamentals", detail: "Containerization and local environments" },
-      { name: "Deployment workflows", detail: "Dev / Staging / Production environments" }
+      { name: "Docker fundamentals", detail: "Containerizing applications and managing local development environments" },
+      { name: "Deployment workflows", detail: "Implementing Dev → Staging → Production deployment pipelines" }
     ]
   }
 ];
