@@ -1,8 +1,8 @@
-import React, { Suspense, useState } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { motion, type Variants } from "framer-motion";
 import ParticleSignature from "../components/ParticleSignature";
-import StarField from "../components/StarField";
+const StarField = lazy(() => import("../components/StarField"));
 
 const InteractiveLetter = ({ char }: { char: string }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -119,7 +119,7 @@ const RippleButton: React.FC = () => {
 
   return (
     <a
-      href="#projects"
+      href="#experience"
       onMouseMove={handleMouseMove}
       className="
         group relative px-12 py-5 bg-white font-bold rounded-full
@@ -128,7 +128,7 @@ const RippleButton: React.FC = () => {
 
         before:absolute before:content-[''] before:w-0 before:h-0
         before:rounded-full before:bg-black
-        before:left-[var(--xPos)] before:top-[var(--yPos)]
+        before:left-(--xPos) before:top-(--yPos)
         before:-translate-x-1/2 before:-translate-y-1/2
         before:transition-all before:duration-700
         hover:before:w-[300px] hover:before:h-[300px]
@@ -168,11 +168,19 @@ export const Hero: React.FC = () => {
 
   return (
     <section id="home" className="relative h-screen flex items-center px-8 md:px-24 overflow-hidden bg-black">
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 10], fov: 40 }}>
+      <div className="fixed inset-0 z-0 pointer-events-none" style={{ background: '#000' }}>
+        <Canvas
+          dpr={[1, 2]}
+          camera={{ position: [0, 0, 10], fov: 45 }}
+          gl={{
+            antialias: true,
+            alpha: true,
+            powerPreference: "high-performance"
+          }}
+        >
           <ambientLight intensity={0.2} />
-          <pointLight position={[10, 10, 10]} intensity={1.5} color="#60a5fa" />
-          <pointLight position={[-10, -10, -10]} intensity={0.5} color="#ec4899" />
+          {/* <pointLight position={[10, 10, 10]} intensity={1.5} color="#60a5fa" />
+          <pointLight position={[-10, -10, -10]} intensity={0.5} color="#ec4899" /> */}
           <Suspense fallback={null}>
             <StarField />
             <ParticleSignature />
@@ -217,7 +225,7 @@ export const Hero: React.FC = () => {
           transition={{ delay: 1.8, duration: 0.8 }}
           className="flex flex-wrap gap-6"
         >
-          <RippleButton/>
+          <RippleButton />
           <a href="#contact" className="px-12 py-5 bg-transparent border border-white/10 text-white font-bold rounded-full hover:bg-white/5 transition-all active:scale-95">
             Collaborate
           </a>

@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Send, Linkedin, Github, CheckCircle, AlertCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
@@ -70,12 +70,21 @@ export const Contact: React.FC = () => {
     }
   };
 
+  const isFormDisabled = isSubmitting || submitStatus === 'success';
+  useEffect(() => {
+    if (submitStatus === 'success') {
+      const timer = setTimeout(() => setSubmitStatus('idle'), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [submitStatus]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!validateForm()) {
       return;
     }
+
 
     setIsSubmitting(true);
     setSubmitStatus('idle');
@@ -116,7 +125,7 @@ export const Contact: React.FC = () => {
             viewport={{ once: true }}
             className="text-[10px] uppercase tracking-[0.6em] font-bold text-zinc-600 block mb-6"
           >
-            Connection
+            Open for Collaboration
           </motion.span>
 
           <motion.h2
@@ -136,7 +145,7 @@ export const Contact: React.FC = () => {
             transition={{ delay: 0.2 }}
             className="text-zinc-400 text-lg md:text-xl font-light leading-relaxed"
           >
-            Let's build something meaningful together.
+            Let’s build something meaningful — or improve what already exists.
           </motion.p>
         </div>
 
@@ -154,7 +163,11 @@ export const Contact: React.FC = () => {
             </div>
             <div className="text-left">
               <p className="text-[10px] text-zinc-600 uppercase font-bold tracking-widest">Email</p>
-              <p className="text-white font-medium group-hover:text-blue-400 transition-colors">dawit.s.haile@gmail.com</p>
+              {/* <p className="text-white font-medium group-hover:text-blue-400 transition-colors">dawit.s.haile@gmail.com</p> */}
+              <p className="text-white font-medium group-hover:text-blue-400 transition-colors select-all">
+                dawit.s.haile@gmail.com
+              </p>
+
             </div>
           </motion.a>
 
@@ -282,12 +295,12 @@ export const Contact: React.FC = () => {
 
             <button
               type="submit"
-              disabled={isSubmitting}
-              className="w-full py-5 bg-white text-black font-bold rounded-2xl hover:bg-zinc-200 active:scale-[0.98] transition-all flex items-center justify-center gap-3 group disabled:opacity-50 disabled:cursor-not-allowed"
+              disabled={isSubmitting || isFormDisabled}
+              className=" hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] w-full py-5 bg-white text-black font-bold rounded-2xl hover:bg-zinc-200 active:scale-[0.98] transition-all flex items-center justify-center gap-3 group disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? (
                 <>
-                  <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
+                  <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin " />
                   Sending...
                 </>
               ) : (
