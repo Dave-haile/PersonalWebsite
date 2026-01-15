@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { motion, type Variants } from "framer-motion";
 import ParticleSignature from "../components/ParticleSignature";
@@ -148,6 +148,17 @@ const RippleButton: React.FC = () => {
 
 export const Hero: React.FC = () => {
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile view to avoid importing/rendering the heavy signature
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -166,6 +177,7 @@ export const Hero: React.FC = () => {
   ]
 
 
+  console.log(isMobile);
   return (
     <section id="home" className="relative h-screen flex items-center px-8 md:px-24 overflow-hidden bg-black">
       <div className="fixed inset-0 z-0 pointer-events-none" style={{ background: '#000' }}>
@@ -183,7 +195,7 @@ export const Hero: React.FC = () => {
           <pointLight position={[-10, -10, -10]} intensity={0.5} color="#ec4899" /> */}
           <Suspense fallback={null}>
             <StarField />
-            <ParticleSignature />
+            {!isMobile && <ParticleSignature />}
           </Suspense>
         </Canvas>
       </div>
