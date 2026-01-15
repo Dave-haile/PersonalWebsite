@@ -178,7 +178,7 @@ export const Hero: React.FC = () => {
 
   return (
     <section id="home" className="relative h-screen flex items-center px-8 md:px-24 overflow-hidden bg-black">
-      <div className="fixed inset-0 z-0 pointer-events-none" style={{ background: '#000' }}>
+      <div className="absolute inset-0 z-0 pointer-events-none" style={{ background: '#000' }}>
         <Canvas
           dpr={[1, 2]}
           camera={{ position: [0, 0, 10], fov: 45 }}
