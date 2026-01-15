@@ -8,7 +8,7 @@
 
 A modern, interactive personal portfolio website showcasing full-stack development expertise with cutting-edge web technologies and stunning 3D animations. Built with React 19, TypeScript, and Three.js for an immersive user experience.
 
-![Portfolio Preview](./public/screenshots/Screenshot 2026-01-15 081532.png)
+![Portfolio Preview](public/screenshots/Screenshot%202026-01-15%20081532.png)
 
 ## ✨ Features
 
