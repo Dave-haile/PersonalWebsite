@@ -90,8 +90,8 @@ src/
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/yourusername/personal-portfolio.git
-   cd personal-portfolio
+   git clone https://github.com/Dave-haile/PersonalWebsite.git
+   cd PersonalWebsite
    ```
 
 2. **Install dependencies**
@@ -200,20 +200,15 @@ This project is private and proprietary. All rights reserved.
 
 ## 👨‍💻 About the Developer
 
-**Dawit Haile** - Full Stack Architect from Addis Ababa, Ethiopia
+**Dawit Haile** - Full Stack Developer from Addis Ababa, Ethiopia
 
-- 🔧 5+ years of experience
-- 📊 50+ projects delivered
-- 😊 20+ happy clients
-- 🎯 99% code quality standard
-
-Specializing in engineering digital experiences where performance meets high-fidelity interactive design.
+- 🔧 2+ years of experience
 
 ## 📞 Contact
 
-- **Email**: [your.email@example.com](mailto:your.email@example.com)
-- **LinkedIn**: [Your LinkedIn Profile](https://linkedin.com/in/yourprofile)
-- **GitHub**: [@yourusername](https://github.com/yourusername)
+- **Email**: [dawit.s.haile@gmail.com](mailto:dawit.s.haile@gmail.com)
+- **LinkedIn**: [Dave-haile](https://linkedin.com/in/dave-haile)
+- **GitHub**: [@Dave-haile](https://github.com/Dave-haile)
 
 ---
 

@@ -176,8 +176,6 @@ export const Hero: React.FC = () => {
     "Haile"
   ]
 
-
-  console.log(isMobile);
   return (
     <section id="home" className="relative h-screen flex items-center px-8 md:px-24 overflow-hidden bg-black">
       <div className="fixed inset-0 z-0 pointer-events-none" style={{ background: '#000' }}>
