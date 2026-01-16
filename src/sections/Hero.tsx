@@ -413,6 +413,7 @@ export const Hero: React.FC = () => {
 
   const headerText = ["Dawit", "Haile"];
 
+
   return (
     <section id="home" className="relative min-h-screen flex items-center px-8 md:px-24 pt-24 md:pt-0 overflow-hidden bg-background">
       <div className="absolute inset-0 z-0 pointer-events-none bg-background">
