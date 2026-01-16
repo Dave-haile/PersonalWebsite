@@ -18,7 +18,7 @@ export const RippleButton: React.FC = () => {
             href="#architecture"
             onMouseMove={handleMouseMove}
             className="
-        group relative px-12 py-5 bg-white font-bold rounded-full
+        group relative px-6 md:px-8 py-5 bg-white font-bold rounded-full
         overflow-hidden transition-transform duration-300
         border-none outline-none focus:outline-none
 

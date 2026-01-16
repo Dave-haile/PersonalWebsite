@@ -254,10 +254,134 @@
 //   );
 // };
 
+// import React, { lazy, Suspense, useEffect, useState } from "react";
+// import { Canvas } from "@react-three/fiber";
+// import { motion, type Variants } from "framer-motion";
+// import { Download } from "lucide-react";
+// import ParticleSignature from "../components/ParticleSignature";
+// import { InteractiveTitle } from "../components/InteractiveTitle";
+// import { RippleButton } from "../components/RippleButton";
+
+// const StarField = lazy(() => import("../components/StarField"));
+
+// export const Hero: React.FC = () => {
+//   const [isMobile, setIsMobile] = useState(false);
+
+//   useEffect(() => {
+//     const checkMobile = () => {
+//       setIsMobile(window.innerWidth < 768);
+//     };
+//     checkMobile();
+//     window.addEventListener('resize', checkMobile);
+//     return () => window.removeEventListener('resize', checkMobile);
+//   }, []);
+
+//   const containerVariants: Variants = {
+//     hidden: { opacity: 0 },
+//     visible: {
+//       opacity: 1,
+//       transition: {
+//         staggerChildren: 0.1,
+//         delayChildren: 0.3,
+//       },
+//     },
+//   };
+
+//   const headerText = ["Dawit", "Haile"];
+
+//   return (
+//     <section id="home" className="relative h-screen min-h-[600px] flex items-center px-8 md:px-24 overflow-hidden bg-black pt-16 md:pt-20">
+//       <div className="absolute inset-0 z-0 pointer-events-auto" style={{ background: '#000' }}>
+//         <Canvas
+//           dpr={[1, 2]}
+//           camera={{ position: [0, 0, 10], fov: 45 }}
+//           gl={{
+//             antialias: true,
+//             alpha: true,
+//             powerPreference: "high-performance"
+//           }}
+//         >
+//           <ambientLight intensity={0.2} />
+//           <Suspense fallback={null}>
+//             <StarField />
+//             {!isMobile && <ParticleSignature />}
+//           </Suspense>
+//         </Canvas>
+//       </div>
+
+//       <div className="z-10 relative pointer-events-none w-full max-w-7xl mx-auto flex flex-col justify-center h-full">
+//         <motion.div
+//           initial={{ opacity: 0, x: -20 }}
+//           animate={{ opacity: 1, x: 0 }}
+//           transition={{ duration: 1 }}
+//           className="pointer-events-auto"
+//         >
+//           <h2 className="text-zinc-500 uppercase tracking-[0.4em] text-[10px] md:text-xs mb-4 md:mb-6 font-bold opacity-70">
+//             FULL STACK ARCHITECTURE
+//           </h2>
+//         </motion.div>
+
+//         <motion.h1
+//           variants={containerVariants}
+//           initial="hidden"
+//           animate="visible"
+//           className="text-6xl md:text-[min(8.5rem,15vh)] font-display font-bold tracking-tighter leading-[0.85] mb-6 md:mb-8 text-white pointer-events-auto"
+//         >
+//           <InteractiveTitle textLines={headerText} />
+//         </motion.h1>
+
+//         <motion.p
+//           initial={{ opacity: 0 }}
+//           animate={{ opacity: 1 }}
+//           transition={{ delay: 1.5, duration: 1 }}
+//           className="text-zinc-400 text-base md:text-lg lg:text-xl font-light leading-relaxed max-w-md mb-8 md:mb-12 pointer-events-auto"
+//         >
+//           Designing and engineering scalable web systems with thoughtful interfaces and resilient backend architecture.
+//         </motion.p>
+
+//         <motion.div
+//           initial={{ opacity: 0, y: 20 }}
+//           animate={{ opacity: 1, y: 0 }}
+//           transition={{ delay: 1.8, duration: 0.8 }}
+//           className="flex flex-wrap gap-4 md:gap-6 items-center"
+//         >
+//           <RippleButton />
+
+//           <div className="flex gap-3 md:gap-4 flex-wrap">
+//             <a
+//               href="#contact"
+//               className="px-6 md:px-10 py-3 md:py-4 bg-transparent border border-white/10 text-white text-sm md:text-base font-bold rounded-full hover:bg-white/5 transition-all active:scale-95"
+//             >
+//               Collaborate
+//             </a>
+
+//             <a
+//               href="/Dawit Haile's CV.pdf"
+//               download
+//               className="px-5 md:px-8 py-3 md:py-4 bg-zinc-900 border border-white/10 text-white text-sm md:text-base font-bold rounded-full hover:bg-zinc-800 transition-all active:scale-95 flex items-center gap-2 group"
+//             >
+//               <Download size={18} className="group-hover:translate-y-0.5 transition-transform" />
+//               <span>Download CV</span>
+//             </a>
+//           </div>
+//         </motion.div>
+//       </div>
+
+//       <div className="absolute left-0 bottom-0 w-full h-1/4 bg-linear-to-t from-black to-transparent pointer-events-none"></div>
+
+//       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-3 opacity-20 pointer-events-none">
+//         <span className="text-[9px] uppercase tracking-[0.6em] font-bold">
+//           Scroll
+//         </span>
+//         <div className="w-px h-10 bg-linear-to-b from-white to-transparent"></div>
+//       </div>
+//     </section>
+//   );
+// };
+
 import React, { lazy, Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { motion, type Variants } from "framer-motion";
-import { Download } from "lucide-react";
 import ParticleSignature from "../components/ParticleSignature";
 import { InteractiveTitle } from "../components/InteractiveTitle";
 import { RippleButton } from "../components/RippleButton";
@@ -290,8 +414,8 @@ export const Hero: React.FC = () => {
   const headerText = ["Dawit", "Haile"];
 
   return (
-    <section id="home" className="relative h-screen min-h-[600px] flex items-center px-8 md:px-24 overflow-hidden bg-black pt-16 md:pt-20">
-      <div className="absolute inset-0 z-0 pointer-events-none" style={{ background: '#000' }}>
+    <section id="home" className="relative min-h-screen flex items-center px-8 md:px-24 pt-24 md:pt-0 overflow-hidden bg-background">
+      <div className="absolute inset-0 z-0 pointer-events-none bg-background">
         <Canvas
           dpr={[1, 2]}
           camera={{ position: [0, 0, 10], fov: 45 }}
@@ -309,13 +433,13 @@ export const Hero: React.FC = () => {
         </Canvas>
       </div>
 
-      <div className="z-10 relative pointer-events-auto w-full max-w-7xl mx-auto flex flex-col justify-center h-full">
+      <div className="z-10 relative pointer-events-auto">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
         >
-          <h2 className="text-zinc-500 uppercase tracking-[0.4em] text-[10px] md:text-xs mb-4 md:mb-6 font-bold opacity-70">
+          <h2 className="text-muted-foreground uppercase tracking-[0.4em] text-[10px] mb-4 font-bold opacity-70">
             FULL STACK ARCHITECTURE
           </h2>
         </motion.div>
@@ -324,7 +448,7 @@ export const Hero: React.FC = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="text-6xl md:text-[min(8.5rem,15vh)] font-display font-bold tracking-tighter leading-[0.85] mb-6 md:mb-8 text-white"
+          className="text-5xl md:text-7xl lg:text-[6rem] font-display font-bold tracking-tighter leading-[0.85] mb-8 text-foreground"
         >
           <InteractiveTitle textLines={headerText} />
         </motion.h1>
@@ -333,47 +457,39 @@ export const Hero: React.FC = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5, duration: 1 }}
-          className="text-zinc-400 text-base md:text-lg lg:text-xl font-light leading-relaxed max-w-md mb-8 md:mb-12"
+          className="text-muted-foreground text-lg md:text-xl font-light leading-relaxed max-w-lg mb-14"
         >
-          Designing and engineering scalable web systems with thoughtful interfaces and resilient backend architecture.
+          I build modern web systems — from architecture and APIs to interfaces and interaction.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.8, duration: 0.8 }}
-          className="flex flex-wrap gap-4 md:gap-6 items-center"
+          className="flex flex-wrap gap-4 md:gap-6"
         >
           <RippleButton />
-
-          <div className="flex gap-3 md:gap-4 flex-wrap">
-            <a
-              href="#contact"
-              className="px-6 md:px-10 py-3 md:py-4 bg-transparent border border-white/10 text-white text-sm md:text-base font-bold rounded-full hover:bg-white/5 transition-all active:scale-95"
-            >
-              Collaborate
-            </a>
-
-            <a
-              href="/Dawit Haile's CV.pdf"
-              download
-              className="px-5 md:px-8 py-3 md:py-4 bg-zinc-900 border border-white/10 text-white text-sm md:text-base font-bold rounded-full hover:bg-zinc-800 transition-all active:scale-95 flex items-center gap-2 group"
-            >
-              <Download size={18} className="group-hover:translate-y-0.5 transition-transform" />
-              <span>Download CV</span>
-            </a>
-          </div>
+          <a href="#contact" className="px-6 md:px-8 py-3 md:py-4 text-sm md:text-base bg-transparent border border-border text-foreground font-bold rounded-full hover:bg-secondary transition-all active:scale-95">
+            Collaborate
+          </a>
+          <a
+            href="/Dawit Haile's CV.pdf"
+            download="Dawit_Haile_CV.pdf"
+            className="px-6 md:px-8 py-3 md:py-4 text-sm md:text-base bg-transparent border border-primary/30 text-primary font-bold rounded-full hover:bg-primary/10 transition-all active:scale-95 flex items-center gap-2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Download CV
+          </a>
         </motion.div>
       </div>
 
-      <div className="absolute left-0 bottom-0 w-full h-1/4 bg-linear-to-t from-black to-transparent pointer-events-none"></div>
-
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-3 opacity-20">
-        <span className="text-[9px] uppercase tracking-[0.6em] font-bold">
-          Scroll
-        </span>
-        <div className="w-px h-10 bg-linear-to-b from-white to-transparent"></div>
-      </div>
+      <div className="absolute left-0 bottom-0 w-full h-1/4 bg-linear-to-t from-background to-transparent pointer-events-none"></div>
     </section>
   );
 };
+
+export default Hero;
