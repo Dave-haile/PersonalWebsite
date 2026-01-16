@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://dawithaile.vercel.app/sitemap.xml
