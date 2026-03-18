@@ -385,6 +385,7 @@ import { motion, type Variants } from "framer-motion";
 import ParticleSignature from "../components/ParticleSignature";
 import { InteractiveTitle } from "../components/InteractiveTitle";
 import { RippleButton } from "../components/RippleButton";
+import FirstFrameReporter from "../three/FirstFrameReporter";
 
 const StarField = lazy(() => import("../components/StarField"));
 
@@ -426,6 +427,7 @@ export const Hero: React.FC = () => {
             powerPreference: "high-performance"
           }}
         >
+          <FirstFrameReporter />
           <ambientLight intensity={0.2} />
           <Suspense fallback={null}>
             <StarField />

@@ -1,7 +1,7 @@
-
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import gsap from 'gsap';
+import { loadingManager } from "../three/loadingManager";
 
 interface DistortionImageProps {
   image1: string;
@@ -126,7 +126,7 @@ const DistortionImage: React.FC<DistortionImageProps> = ({
 
     parent.appendChild(renderer.domElement);
 
-    const loader = new THREE.TextureLoader();
+    const loader = new THREE.TextureLoader(loadingManager);
     loader.crossOrigin = "anonymous";
 
     const imageRes = new THREE.Vector2(1, 1);
