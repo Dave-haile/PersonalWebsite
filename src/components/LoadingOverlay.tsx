@@ -101,7 +101,7 @@ const LoadingOverlay: React.FC<LoadingOverlayProps> = ({ visible, progress }) =>
 
           {/* Scanning Line */}
           <motion.div
-            className="absolute top-0 left-0 w-full h-[1px] bg-white/20 pointer-events-none"
+            className="absolute top-0 left-0 w-full h-px bg-white/20 pointer-events-none"
             animate={{ top: ["0%", "100%"] }}
             transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
           />
@@ -129,10 +129,68 @@ const LoadingOverlay: React.FC<LoadingOverlayProps> = ({ visible, progress }) =>
               ))}
             </div>
 
+            {/* "PLEASE WAIT" Micro-text */}
+            <div className="flex items-center justify-center gap-3 mb-2 overflow-hidden">
+              <motion.div
+                animate={{ opacity: [0.2, 1, 0.2] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+                className="w-1 h-1 bg-white/40 rounded-full"
+              />
+              <div className="relative">
+                <motion.div
+                  className="flex"
+                  animate={{
+                    x: isGlitching ? [0, -2, 2, 0] : 0,
+                    filter: isGlitching ? ["blur(0px)", "blur(1px)", "blur(0px)"] : "blur(0px)"
+                  }}
+                  transition={{ duration: 0.1, repeat: isGlitching ? 2 : 0 }}
+                >
+                  {"PLEASE WAIT".split("").map((char, i) => (
+                    <motion.span
+                      key={i}
+                      initial={{ opacity: 0 }}
+                      animate={{
+                        opacity: [0, 1, 0.5, 1],
+                        transition: {
+                          delay: 0.8 + (i * 0.03),
+                          duration: 0.2,
+                        }
+                      }}
+                      className="font-mono text-[8px] md:text-[10px] uppercase tracking-[0.4em] text-white/40"
+                    >
+                      {char === " " ? "\u00A0" : char}
+                    </motion.span>
+                  ))}
+                  {/* Blinking Cursor */}
+                  <motion.span
+                    animate={{ opacity: [0, 1, 0] }}
+                    transition={{
+                      duration: 0.8,
+                      repeat: Infinity,
+                      ease: "linear",
+                      times: [0, 0.5, 1]
+                    }}
+                    className="w-1 h-3 bg-white/40 ml-1"
+                  />
+                </motion.div>
+                {/* Scanning highlight */}
+                <motion.div
+                  className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent w-1/2 h-full"
+                  animate={{ left: ["-100%", "200%"] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "linear", delay: 1 }}
+                />
+              </div>
+              <motion.div
+                animate={{ opacity: [0.2, 1, 0.2] }}
+                transition={{ duration: 1.5, repeat: Infinity, delay: 0.75 }}
+                className="w-1 h-1 bg-white/40 rounded-full"
+              />
+            </div>
+
             {/* Progress Bar Container */}
             <div className="relative mb-6">
               {/* Bar Background */}
-              <div className="h-[1px] w-full bg-zinc-900 overflow-hidden relative">
+              <div className="h-px w-full bg-zinc-900 overflow-hidden relative">
                 {/* Active Progress */}
                 <motion.div
                   className="absolute top-0 left-0 h-full bg-white shadow-[0_0_20px_rgba(255,255,255,0.8)]"
@@ -159,7 +217,7 @@ const LoadingOverlay: React.FC<LoadingOverlayProps> = ({ visible, progress }) =>
                 {[0, 25, 50, 75, 100].map((mark) => (
                   <div
                     key={mark}
-                    className={`h-2 w-[1px] bg-zinc-800 transition-colors duration-300 ${pct >= mark ? "bg-white/50" : ""}`}
+                    className={`h-2 w-px bg-zinc-800 transition-colors duration-300 ${pct >= mark ? "bg-white/50" : ""}`}
                   />
                 ))}
               </div>
