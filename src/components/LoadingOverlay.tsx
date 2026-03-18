@@ -28,6 +28,12 @@ const LoadingOverlay: React.FC<LoadingOverlayProps> = ({ visible, progress }) =>
   // Glitch effect state
   const [isGlitching, setIsGlitching] = useState(false);
 
+  const [dataPoints, setDataPoints] = useState<{
+    x: string;
+    y: string;
+    z: string;
+  } | null>(null);
+
   useEffect(() => {
     if (!visible) return;
 
@@ -49,6 +55,20 @@ const LoadingOverlay: React.FC<LoadingOverlayProps> = ({ visible, progress }) =>
     timeoutId = setTimeout(triggerGlitch, 2000);
 
     return () => clearTimeout(timeoutId);
+  }, [visible]);
+
+  useEffect(() => {
+    if (!visible) return;
+
+    const id = setTimeout(() => {
+      setDataPoints({
+        x: Math.random().toFixed(4),
+        y: Math.random().toFixed(4),
+        z: Math.random().toFixed(4),
+      });
+    }, 0);
+
+    return () => clearTimeout(id);
   }, [visible]);
 
   return (
@@ -191,9 +211,9 @@ const LoadingOverlay: React.FC<LoadingOverlayProps> = ({ visible, progress }) =>
 
           {/* Floating Data Points (Simulated) */}
           <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex gap-8 opacity-20 font-mono text-[8px] tracking-widest text-white">
-            <span>X: {Math.random().toFixed(4)}</span>
-            <span>Y: {Math.random().toFixed(4)}</span>
-            <span>Z: {Math.random().toFixed(4)}</span>
+            <span>X: {dataPoints?.x ?? "----"}</span>
+            <span>Y: {dataPoints?.y ?? "----"}</span>
+            <span>Z: {dataPoints?.z ?? "----"}</span>
           </div>
         </motion.div>
       )}
